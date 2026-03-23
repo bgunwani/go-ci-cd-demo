@@ -7,5 +7,6 @@ func Add(a, b int) int {
 }
 
 func main() {
+	fmt.Println("Integrating CI/CD Pipeline..")
 	fmt.Println("Sum: ", Add(10, 20))
 }
