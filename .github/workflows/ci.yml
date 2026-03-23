@@ -1,0 +1,32 @@
+name: Go CI Pipeline
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Verify Go Installation
+        run: go version
+
+      - name: Install Dependencies
+        run: go mod tidy
+
+      - name: Build Application
+        run: go build -v ./...
+
+      - name: Run Tests
+        run: go test ./...
